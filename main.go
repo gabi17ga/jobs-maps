@@ -1,21 +1,14 @@
 package main
 
-type info struct {
-	CompanyName string
-	Address     string
-	Jobs        []job
-}
-
-type job struct {
-	Name string
-	Link string
-}
+import (
+	"github.com/davecgh/go-spew/spew"
+)
 
 func main() {
 	content, err := request("https://www.ejobs.ro/company/ejobs-group/266860")
 	if err != nil {
 		panic(err)
 	}
-	extract(*content)
-
+	i := extract(*content)
+	spew.Dump(i)
 }
